@@ -3,6 +3,7 @@
 <head>
 	<title>Rock, paper, scissors</title>
 	<script type="text/javascript">
+
 		function computerPlay() {
 			let randomNumber = Math.floor((Math.random()*3+1));
 			if (randomNumber == 1) {
@@ -17,12 +18,62 @@
 		}
 
 		function playRound(playerSelection, computerSelection) {
-			// My code here
+			playerSelection = playerSelection.toLowerCase()
+
+			let youWin = "You win!"
+			let youLose = "You lose!"
+			let draw = "Draw!"
+
+			let rockrock = "Both played rock."
+			let rockpaper = "Paper beats rock!"
+			let rockscissor = "Rock beats scissors!"
+			let paperpaper = "Both played paper."
+			let paperscissors = "Scissors beat paper!"
+			let scissorsscissors = "Both played scissors."
+
+			if (playerSelection == "rock") {
+				if (computerSelection == "rock") {
+					winMessage = draw;
+					playMessage = rockrock;
+				} else if (computerSelection == "paper") {
+					winMessage = youLose;
+					playMessage = rockpaper;
+				} else if (computerSelection == "scissors") {
+					winMessage = youWin;
+					playMessage = rockscissor;
+				}
+			}
+			if (playerSelection == "paper") {
+				if (computerSelection == "rock") {
+					winMessage = youWin;
+					playMessage = rockpaper;
+				} else if (computerSelection == "paper") {
+					winMessage = draw;
+					playMessage = paperpaper;
+				} else if (computerSelection == "scissors") {
+					winMessage = youLose;
+					playMessage = paperscissors;
+				}
+			}
+			if (playerSelection == "scissors") {
+				if (computerSelection == "rock") {
+					winMessage = youLose;
+					playMessage = rockscissor;
+				} else if (computerSelection == "paper") {
+					winMessage = youWin;
+					playMessage = paperscissors;
+				} else if (computerSelection == "scissors") {
+					winMessage = draw;
+					playMessage = scissorsscissors;
+				}
+			}
+			return winMessage + " " + playMessage
 		}
 
 		const playerSelection = "rock"
 		const computerSelection = computerPlay()
 		console.log(playRound(playerSelection, computerSelection))
+		
 	</script>
 </head>
 <body>
